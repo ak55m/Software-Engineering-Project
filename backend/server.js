@@ -6,7 +6,7 @@ import { errorHandler, notFound } from "./Middleware/Errors.js";
 // import productRoute from "./Routes/ProductRoutes.js";
 // import userRouter from "./Routes/UserRoutes.js";
 // import orderRouter from "./Routes/orderRoutes.js";
-// import Stripe from "stripe";
+import Stripe from "stripe";
 dotenv.config();
 
 
