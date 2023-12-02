@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 function SignUp() {
   const history = useHistory();
-  const [formData, setFormData] = useState({
+  const [signupData, setSignupData] = useState({
     name: '',
     email: '',
     address: '',
@@ -14,10 +14,10 @@ function SignUp() {
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     try {
@@ -26,7 +26,7 @@ function SignUp() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(signupData),
       });
 
       const data = await response.json();
@@ -40,20 +40,20 @@ function SignUp() {
   return (
     <div>
       <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignUp}>
         <label>
           Name:
-          <input type="text" name="name" value={formData.name} onChange={handleChange} />
+          <input type="text" name="name" value={signupData.name} onChange={handleChange} />
         </label>
         <br />
         <label>
           Email:
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
+          <input type="email" name="email" value={signupData.email} onChange={handleChange} />
         </label>
         <br />
         <label>
           Address:
-          <input type="text" name="address" value={formData.address} onChange={handleChange} />
+          <input type="text" name="address" value={signupData.address} onChange={handleChange} />
         </label>
         <br />
         <label>
@@ -61,14 +61,14 @@ function SignUp() {
           <input
             type="text"
             name="phoneNumber"
-            value={formData.phoneNumber}
+            value={signupData.phoneNumber}
             onChange={handleChange}
           />
         </label>
         <br />
         <label>
           Password:
-          <input type="password" name="password" value={formData.password} onChange={handleChange} />
+          <input type="password" name="password" value={signupData.password} onChange={handleChange} />
         </label>
         <br />
         <button type="submit">Sign Up</button>

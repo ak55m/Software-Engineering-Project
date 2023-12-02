@@ -27,19 +27,18 @@ function Login() {
         body: JSON.stringify(loginData),
       });
 
-      const data = await response.json();
-      console.log(data);
-
-      // If login is successful, redirect to a different page
       if (response.ok) {
-        history.push('/dashboard'); // dashboard for whatever to redirect
+        const { token } = await response.json();
+        localStorage.setItem('token', token);
+        history.push('/profile');
+      } else {
+        console.error('Login failed:', response.statusText);
       }
-
     } catch (error) {
       console.error('Error during login:', error);
     }
   };
-
+  
   return (
     <div>
       <h2>Login</h2>
