@@ -7,17 +7,34 @@ import { errorHandler, notFound } from "./Middleware/Errors.js";
 // import userRouter from "./Routes/UserRoutes.js";
 // import orderRouter from "./Routes/orderRoutes.js";
 import Stripe from "stripe";
+import User from './models/User.js';
+import jwt from 'jsonwebtoken'; 
 dotenv.config();
-
 
 connectDatabase();
 const app = express();
-
 const stripe  = new Stripe(process.env.STRIPE_KEY);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Middleware to authenticate the user using a token
+const authenticateUser = async (req, res, next) => {
+  const token = req.headers.authorization;
+
+  if (!token) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded.user;
+    next();
+  } catch (error) {
+    console.error('Error authenticating user:', error);
+    res.status(401).json({ message: 'Unauthorized' });
+  }
+};
 
 // API
 // app.use("/api/import", ImportData);
@@ -86,6 +103,40 @@ app.post("/api/login", (req, res) => {
   }
 });
 
+// Fetch user data endpoint
+app.get('/api/get-user', authenticateUser, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Send only necessary user data to the client (exclude sensitive info)
+    const userData = {
+      name: user.name,
+      email: user.email,
+      address: user.address,
+      phoneNumber: user.phoneNumber,
+    };
+
+    res.json({ user: userData });
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// Fetch all available lottery tickets
+app.get('/api/lottery-tickets', async (req, res) => {
+  try {
+    const lotteryTickets = await LotteryTicket.find();
+    res.json({ lotteryTickets });
+  } catch (error) {
+    console.error('Error fetching lottery tickets:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 
 // ERROR HANDLER

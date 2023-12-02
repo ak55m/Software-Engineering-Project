@@ -4,7 +4,9 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SignUp from './SignUp';
 import  Login from './Login';
-import Profile from './Profile';
+import Profile from './Proflie';
+import EditProfile from './EditProfile';
+import LotteryTickets from './LotteryTickets' 
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/profile" component={Profile} />
+          <Route path="/edit-profile" component={EditProfile} />
+          <Route path="/lottery-tickets" component={LotteryTickets} />
         </Switch>
       </div>
     </Router>
