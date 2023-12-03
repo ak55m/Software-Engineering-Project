@@ -13,3 +13,6 @@ ImportData.post(
     res.send({ importUser });
   })
 );
+
+
+export default ImportData;
