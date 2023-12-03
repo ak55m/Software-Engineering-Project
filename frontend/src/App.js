@@ -18,6 +18,10 @@ const App = () => {
         <Route path="*" component={NotFound} />
         {/* <PrivateRoute path="/home" component={HomeScreen} /> */}
 
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/" element={<HomeScreen />} />
+        </Route>
+
 
       </Routes>
     </Router>
