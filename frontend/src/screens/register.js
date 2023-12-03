@@ -6,7 +6,7 @@ import Loading from "../components/LoadingError/Loading";
 import { register } from "../Redux/Actions/useractions";
 import Header from "../components/Header";
 
-const Signup = ({ history }) => {
+const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -99,7 +99,7 @@ const Signup = ({ history }) => {
                     Sign Up
                   </button>
                   <p className="mt-3">
-                    Already have an account? <Link to="/signin">Signin</Link>
+                    Already have an account? <Link to="/login">Signin</Link>
                   </p>
                 </form>
               </div>
@@ -111,4 +111,4 @@ const Signup = ({ history }) => {
   );
 };
 
-export default Signup;
+export default Register;

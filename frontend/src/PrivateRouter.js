@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-function PrivateRouter({ element: Element, ...rest }) {
+function PrivateRoute({ element: Element, ...rest }) {
   const token = window.localStorage.getItem("userInfo");
 
   return (
@@ -14,4 +14,4 @@ function PrivateRouter({ element: Element, ...rest }) {
   );
 }
 
-export default PrivateRouter;
+export default PrivateRoute;

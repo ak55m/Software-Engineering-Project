@@ -4,7 +4,7 @@ import connectDatabase from "./config/MongoDb.js";
 import { errorHandler, notFound } from "./Middleware/Errors.js";
 import ImportData from "./DataImport.js";
 // import productRoute from "./Routes/ProductRoutes.js";
-// import userRouter from "./Routes/UserRoutes.js";
+import userRouter from "./Routes/UserRoutes.js";
 // import orderRouter from "./Routes/orderRoutes.js";
 import Stripe from "stripe";
 dotenv.config();
@@ -21,9 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // API
 app.use("/api/import", ImportData);
-// app.use("/api/products", productRoute);
 app.use("/api/users", userRouter);
 // app.use("/api/orders", orderRouter);
+// app.use("/api/products", productRoute);
 
 
 app.post("/create-payment", async(req, res)=> {

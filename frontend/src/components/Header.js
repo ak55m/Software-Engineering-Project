@@ -78,8 +78,8 @@ const Header = () => {
                   </div>
                 ) : (
                   <>
-                    <Link to="/signup">Sign Up</Link>
-                    <Link to="/signin">Login</Link>
+                    <Link to="/register">Sign Up</Link>
+                    <Link to="/login">Login</Link>
                   </>
                 )}
               </div>

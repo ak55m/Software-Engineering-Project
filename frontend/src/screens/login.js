@@ -7,7 +7,7 @@ import Message from "../components/LoadingError/Error";
 import Loading from "../components/LoadingError/Loading";
 import Header from "../components/Header";
 
-const Signin = ({ location, history }) => {  // Use history directly from props
+const Login = ({ location, history }) => {  // Use history directly from props
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -69,7 +69,7 @@ const Signin = ({ location, history }) => {  // Use history directly from props
                   </div>
                   <p className="mt-3">
                     No Account? <Link
-                      to={redirect ? `/signup?redirect=${redirect}` : "/signup"}
+                      to={redirect ? `/register?redirect=${redirect}` : "/register"}
                     >
                     Sign Up
                     </Link>
@@ -87,4 +87,4 @@ const Signin = ({ location, history }) => {  // Use history directly from props
   );
 };
 
-export default Signin;
+export default Login;
