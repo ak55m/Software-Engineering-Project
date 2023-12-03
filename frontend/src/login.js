@@ -2,10 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { login } from "../Redux/Actions/useractions";
-import Message from "../components/LoadingError/Error";
-import Loading from "../components/LoadingError/Loading";
-import Header from "../components/Header";
+import { login } from "./Redux/Actions/useractions";
+import Message from "./components/LoadingError/Error";
+import Loading from "./components/LoadingError/Loading";
+import Header from "./components/Header";
 
 const Login = ({ location, history }) => {  // Use history directly from props
   const [email, setEmail] = useState("");

@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Switch } from "react-router-dom";
-import Login from "./screens/login";
-import Register from "./screens/register";
-import NotFound from "./screens/NotFound";
-import HomeScreen from "./screens/HomeScreen";
+import Login from "./login";
+import Register from "./register";
+import NotFound from "./NotFound";
+import HomeScreen from "./HomeScreen";
 import PrivateRoute from "./PrivateRouter";
 
 // Import Bootstrap styles

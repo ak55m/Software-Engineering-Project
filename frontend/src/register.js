@@ -1,10 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Message from "../components/LoadingError/Error";
-import Loading from "../components/LoadingError/Loading";
-import { register } from "../Redux/Actions/useractions";
-import Header from "../components/Header";
+import Message from "./components/LoadingError/Error";
+import Loading from "./components/LoadingError/Loading";
+import { register } from "./Redux/Actions/useractions";
+import Header from "./components/Header";
 
 const Register = ({ history }) => {
   const [name, setName] = useState("");
